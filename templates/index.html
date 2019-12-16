@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>おススメや</title>
+  <meta charset="utf-8">
+
+  <style type="text/css">
+    body{background-color:#CCFF16;
+      height: 200px;
+    }
+    .container{
+      text-align: center;
+      padding: 5px, 15px;
+      background-color: #fff;
+      margin: 0 auto;
+      width: 410px;
+    }
+    .btn{
+      margin:5px;
+      display: inline-block;
+      padding: 7px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #FFF;
+      background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+      transition: .4s;
+    }
+    .btn:hover{
+      background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    }
+    .image{
+      text-align: center;
+    }
+    .image h2{
+      background-color: #FFFACD;
+      padding: 5px, 15px;
+    }
+  </style>
+</head>
+<html>
+<body>
+<div class = "container">
+  <div class="row">
+    <div class=col-md-12>
+      <h1>おススメや</h1>
+      <p>ツイッターのIDを入れると、おススメの「いらすとや」の画像が表示されます。</p>
+      <form class="form-inline" method="post">
+        <div class="form-group">
+            <span class="input-group-addon">@</span>
+            <input id="user_id" name="user_id" placeholder="ここにツイッターIDを入力してください" type=text class="form-control">
+            {% if message %}
+            <p>{{message}}</p>
+            {% endif %}
+          </div>
+        </div>
+      <button type="submit" class="btn">試す</button>
+      </form>
+    {% if top_1 %}
+        <p>{{user_id}}が最近多くつぶやいているのは「{{top_1}}」です</p>
+    {% endif %}
+    {% if imageLink %}
+        <p>あなたにおすすめの画像はこれです↓</p>
+    {% endif %}
+    </div>
+  </div>
+</div>
+<div class=image>
+{% if imageLink %}
+  <h2>{{title}}</h2>
+  <img src="{{imageLink}}"></img>
+{% endif %}
+</div>
+</body>
+</html>
